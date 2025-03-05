@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecommerce</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+        main{
+            padding: 2rem;
+        }
+
+
+        td{
+            padding: .5rem;
+        }
+
+        a:hover{
+            color: blue;
+        }
+
+        .pay{
+            display: inline-block;
+            border: none;
+            background-color: green;
+            color: #fff;
+            border-radius: 18px;
+            padding: 10px;
+            font-size: large;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .pay:hover{color: #fff}
+
+    </style>
+</head>
+<body>
+
+     <!-- Navbar -->
+     <nav>
+        <div>
+            <a href="/index.html">MyEcommerce</a>
+        </div>
+        <div class="nav-inner-right">
+            <a href="/products.html">Products</a>
+            <a href="/cart.html" class="'totalTag" >My cart <p id="total"></p> </a>
+            <a href="/aboutus.html">About us</a>
+        </div>
+     </nav>
+
+     <main>
+        <section id="section">
+            <h2>Your cart</h2>
+
+            <div id="message">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+
+                <table id="secondTable">
+                    <!-- <thead>
+                        <tr>
+                            <th>Total to pay</th>
+                        </tr>
+                    </thead>
+                    <tbody id="totalToPay">
+                    </tbody> -->
+                </table>
+            </div>
+        </section>
+        <!-- <div>
+            <a class="pay" href="/payment.html" onclick="processToPay()">Process to pay</a>
+        </div> -->
+    </main>
+
+     <footer>
+        <div>MyEcommerce &copy 2025</div>
+        <div class="footer-inner-right">
+            <a href="/products.html">Products</a>
+            <a href="/aboutus.html">About us</a>
+            <a href="#">Careers</a>
+        </div>
+     </footer>
+
+     <script src="/index.js"></script>
+     <script>
+        const message = document.getElementById('message')
+        const table = document.querySelector("tbody")
+        const totalToPay = document.getElementById('totalToPay')
+        const secontTable = document.getElementById('secondTable')
+        // const totalfield = document.createElement("tr"); // Create a new table row
+        let total = 0;
+
+        if(cart.length === 0){
+            message.innerHTML = `
+                <p>Your cart is empty</p>
+                <a href='/products.html' >Start Shopping</a>
+            
+            `
+        } else {
+
+            for(x of cart){
+                total += x.qty * x.price
+                const row = document.createElement("tr"); // Create a new table row
+                
+                row.innerHTML = `
+                    <td> <a href="/product.html?id=${x['id']}">${x.title}</a></td>
+                    <td>$${x.price.toLocaleString("en-US", { minimumFractionDigits: 2 })}</td>
+                    <td>${x.qty}</td>
+                    <td>$${(x.qty * x.price).toLocaleString("en-US", { minimumFractionDigits: 2 })}</td>
+                    `;
+                    table.appendChild(row)
+                }
+                
+                secontTable.innerHTML += `
+                    <thead>
+                            <tr>
+                                <th>Total to pay</th>
+                                <td>$${total.toLocaleString("en-US", { minimumFractionDigits: 2 })}</td>
+                            </tr>
+                    </thead>
+                    
+                    <div>
+                        <a class="pay" href="/payment.html" onclick="processToPay()">Process to pay</a>
+                    </div> 
+            `;
+            // totalToPay.appendChild(totalfield)
+            
+        }
+
+
+
+
+     </script>
+    
+</body>
+</html>

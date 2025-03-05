@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    img{
+        width: 400px;
+        height: 300px;
+    }
+
+    .added{
+        display: none;
+        position: fixed;
+        z-index: 1;
+        background-color: green;
+        padding: 5px;
+        color: #fff;
+        font-weight: 700;
+        margin-left: 2rem;  
+    }
+
+    section{
+        display: flex; flex-direction: column;
+        padding: 1rem;
+        width: 50%;
+
+
+    }
+
+    .inner-section{
+        display: flex; flex-direction: column; gap: 1rem;
+    }
+
+    .details{
+        padding: 1rem;
+        /* width: 50%; */
+        display: flex; flex-direction: column; gap: 1rem;
+    }
+
+
+
+</style>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div>
+            <a href="/index.html">MyEcommerce</a>
+        </div>
+        <div class="nav-inner-right">
+            <a href="/products.html">Products</a>
+            <a href="/cart.html" class="'totalTag">My cart <p id="total"></p> </a>
+            <a href="/aboutus.html">About us</a>
+        </div>
+     </nav>
+
+     <p id="added" class="added"></p>
+
+     <!-- Details -->
+      <main>
+            <section id="section"></section>
+      </main>
+
+     <!-- Footer -->
+     <footer>
+        <div>MyEcommerce &copy 2025</div>
+        <div class="footer-inner-right">
+            <a href="/products.html">Products</a>
+            <a href="/aboutus.html">About us</a>
+            <a href="#">Careers</a>
+        </div>
+     </footer>
+
+     <script src="index.js"></script>
+     <script>
+        const getParams = new URLSearchParams(window.location.search)
+        const id = getParams.get('id')
+        const url = `https://fakestoreapi.com/products/${id}`;
+
+        //fetch de api
+        fetch(url)
+            .then(res=>res.json())
+            .then(data => products(data))
+            .catch(err => displayErr(err))
+
+
+        //display the product detail
+        const products = (data) => {
+            if(data.id){
+                section.innerHTML += `
+                    <div class='inner-section'>
+                        <h1>${data['title']}</h1>
+                        <img src=${data['image']} />
+                        <div class='details'>
+                            <p>${data['description']}</p>
+                            <p>Category: ${data['category']}</p>
+                            <p>Rate: ${data['rating']['rate']} of 5</p>
+                            <p>Price: $${data['price']}</p>
+                            <button onclick='addtocart(${JSON.stringify({id: data['id'], title: data['title'], price: data['price']})})'>Add to cart</button>
+                        </div>
+                    </div>
+                `;
+
+            } 
+        }
+     </script>
+     
+    
+</body>
+</html>

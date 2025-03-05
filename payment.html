@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .added{
+            display: none;
+            position: fixed;
+            z-index: 1;
+            background-color: green;
+            padding: 5px;
+            color: #fff;
+            font-weight: 700;
+            margin-left: 2rem;
+            
+        }
+
+        section{
+            padding: 1rem;
+            /* width: 80%; */
+        }
+        form{
+            
+            /* width: 100%; */
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            gap: .5rem;
+        }
+
+        .btn{
+            display: inline-block;
+            border: none;
+            background-color: green;
+            color: #fff;
+            border-radius: 18px;
+            padding: 10px;
+            font-size: large;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        input{
+            height: 2rem; padding: .3rem;
+        }
+    </style>
+</head>
+<body>
+
+     <!-- Navbar -->
+     <nav>
+        <div>
+            <a href="/index.html">MyEcommerce</a>
+        </div>
+        <div class="nav-inner-right">
+            <a href="/products.html">Products</a>
+            <a href="/cart.html" class="'totalTag" >My cart <p id="total"></p> </a>
+            <a href="/aboutus.html">About us</a>
+        </div>
+     </nav>
+
+     <p id="added" class="added"></p>
+
+     <section>
+        <h2>Fill out your data</h2>
+
+        <form action="">
+            <label for="name">Name</label>
+            <input type="text" placeholder="Your name">
+            
+            <label for="name">Email</label>
+            <input type="email" placeholder="Your email">
+
+            <label for="name">Address</label>
+            <input type="text" placeholder="Your address">
+
+
+            <label for="name">Credit/Debit card</label>
+            <input type="text" placeholder="Fake credit/debit number">
+
+            <a class="btn" onclick="paid()">Pay Now</a>
+
+        </form>
+     </section>
+
+     <footer>
+        <div>MyEcommerce &copy 2025</div>
+        <div class="footer-inner-right">
+            <a href="/products.html">Products</a>
+            <a href="/aboutus.html">About us</a>
+            <a href="#">Careers</a>
+        </div>
+     </footer>
+
+     <script src="/index.js"></script>
+
+     <script>
+        
+        function paid(){
+            if(cart.length === 0){
+                console.log('We cannot process your order because your cart is empty...')
+            } else{
+                sessionStorage.setItem('notification', 'Order paid. You will recive your order in 2-3 weeks.')
+                showNotification()
+                setTimeout(() => {
+                    added.style.display = 'none'
+                    window.location.href = 'index.html'
+                }, 3000);
+                localStorage.setItem('cart', JSON.stringify([]))
+            }
+            // alert()
+        }
+     </script>
+    
+</body>
+</html>
