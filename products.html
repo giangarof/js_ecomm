@@ -120,15 +120,15 @@
     <!-- Navbar -->
     <nav>
         <div>
-            <a href="/index.html">MyEcommerce</a>
+            <a href="index.html">MyEcommerce</a>
         </div>
         <div class="nav-inner-right">
-            <a href="/products.html">Products</a>
+            <a href="products.html">Products</a>
             <div class="itemsNum">
-                <a href="/cart.html" class="totalTag" >My cart</a>
+                <a href="cart.html" class="totalTag" >My cart</a>
                 <p id="total"></p> 
             </div>
-            <a href="/aboutus.html">About us</a>
+            <a href="aboutus.html">About us</a>
         </div>
      </nav>
 
@@ -143,8 +143,8 @@
      <footer>
         <div>MyEcommerce &copy 2025</div>
         <div class="footer-inner-right">
-            <a href="/products.html">Products</a>
-            <a href="/aboutus.html">About us</a>
+            <a href="products.html">Products</a>
+            <a href="aboutus.html">About us</a>
             <a href="#">Careers</a>
         </div>
      </footer>
@@ -164,7 +164,7 @@
                 for(x of data){
                     section.innerHTML += `
                         <div class='card'>
-                            <p> <a href="/product.html?id=${x['id']}" class='link'> ${x["title"]} </a> </p>
+                            <p> <a href="product.html?id=${x['id']}" class='link'> ${x["title"]} </a> </p>
                             <img src=${x['image']} />
                             <div class='details'>
                                 <p class='inner-details'>${x['description']}</p>
