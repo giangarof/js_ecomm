@@ -96,7 +96,7 @@
         </div>
      </footer>
 
-     <script src="/index.js"></script>
+     <script src="index.js"></script>
      <script>
         const message = document.getElementById('message')
         const table = document.querySelector("tbody")
@@ -118,7 +118,7 @@
                 const row = document.createElement("tr"); // Create a new table row
                 
                 row.innerHTML = `
-                    <td> <a href="/product.html?id=${x['id']}">${x.title}</a></td>
+                    <td> <a href="product.html?id=${x['id']}">${x.title}</a></td>
                     <td>$${x.price.toLocaleString("en-US", { minimumFractionDigits: 2 })}</td>
                     <td>${x.qty}</td>
                     <td>$${(x.qty * x.price).toLocaleString("en-US", { minimumFractionDigits: 2 })}</td>
