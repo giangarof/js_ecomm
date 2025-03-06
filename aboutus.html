@@ -5,6 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ecommerce</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        main{
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+        section{
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            align-content: center;
+            gap: 2rem;
+            /* width: 400px; */
+        }
+        h2, h3{
+            text-align: center;
+            border: 2px solid #000;
+            width: 100%;
+            padding: 1rem;
+        }
+
+        .content{
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            /* background-color: red; */
+        }
+        
+        .content>p{
+            margin: 1rem;
+        }
+
+        @media screen and (max-width:426px){
+            
+            main, section{
+                width: 100%;
+            }
+
+            .content>p{
+                width: 90%;
+            }
+
+        }
+
+      
+
+        
+    </style>
 </head>
 <body>
 
@@ -15,13 +67,42 @@
         </div>
         <div class="nav-inner-right">
             <a href="/products.html">Products</a>
-            <a href="/cart.html">My cart</a>
+            <div class="itemsNum">
+                <a href="/cart.html" class="totalTag" >My cart</a>
+                <p id="total"></p> 
+            </div>
             <a href="/aboutus.html">About us</a>
         </div>
      </nav>
 
      <main>
-        about us
+        <section>
+            <div class="content">
+                <h2>Ecommerce project</h2>
+                <p>Developed with pure vanilla JS from the ground up. No database integration.</p>
+            </div>
+
+            <div class="content">
+                <h3>Description</h3>
+                <p>This Ecommerce model is to showcase basic functionalities of an ecommerce site with the fake store api to display data. 
+                    Each item can be added to the cart and therefore submit the order.</p>
+            </div>
+
+            <div class="content">
+                <h3>Functionalities</h3>
+                <p>Fetched items using the Fetch Api.</p>
+                <p>Items are stored in localStorage. Therefore the quantity is displayed in the navbar.</p>
+                <p>Session storage is used to display messages when an item is added to the cart or when the order is submited.</p>
+                <p>There is a validation process when submiting the order, no fields must be empty.</p>
+                <p>If same item is added the quantity of the item updates.</p>
+                <p>Payment details are excluded.</p>
+            </div>
+
+            <div class="content">
+                <h3>Styling</h3>
+                <p>CSS from the ground up, responsive design using media queries.</p>
+            </div>
+        </section>
      </main>
 
      <footer>
@@ -33,5 +114,6 @@
         </div>
      </footer>
     
+     <script src="index.js"></script>
 </body>
 </html>

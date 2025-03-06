@@ -3,29 +3,41 @@ let cart = JSON.parse(localStorage.getItem('cart')) || [];
 const section = document.getElementById('section')
 const totalTag = document.getElementById('total');
 
+
+function escapeString(str) {
+    // Check if the string starts with a quote and does not end with one
+    if (str.startsWith('"') && !str.endsWith('"')) {
+        return str + '"'; // Add closing quote
+    }
+    return str; // Return the string as is if no issue
+}
 //add to the cart function
 function addtocart(item){
-    console.log(item)
+
     //check if item exist in the cart first
     const exist = cart.find(product => product.id === item.id);
-        if(exist){
-            exist.qty += 1;
-            sessionStorage.setItem('notification', 'Another item has been added to the cart')
-            console.log('another one added')
-        }else{
-            // add item to cart
-            const product = {
-                id: item.id,
-                price: item.price,
-                title: item.title,
-                qty: 1
-            }
-            cart.push(product);
-            sessionStorage.setItem('notification', 'New item added')
+
+    if(exist){
+        exist.qty += 1;
+        sessionStorage.setItem('notification', 'Another item has been added to the cart')
+        // console.log('another one added')
+    }else{
+        // add item to cart
+        const product = {
+            id: item.id,
+            title: item.title,
+            price: item.price,
+            qty: 1
         }
-        showNotification()
-        localStorage.setItem('cart', JSON.stringify(cart))
-        displayTotal()
+        cart.push(product);
+        sessionStorage.setItem('notification', 'New item added')
+         
+    }
+    
+    showNotification()
+    localStorage.setItem('cart', JSON.stringify(cart))
+    displayTotal()
+    
 }
 
 //display notification 

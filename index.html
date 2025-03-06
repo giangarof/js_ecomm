@@ -19,10 +19,13 @@
 
         .header-inner-left{
             color: #fff;
+
             position: absolute;
             bottom: 2rem;
-            left: 45%;
-
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            width: max-content;
         }
 
         .header-inner-left>a{
@@ -34,19 +37,29 @@
             border: 1px solid #fff;
             padding: 0.5rem;
         }
-        main, section{
+
+        main{
             width: 100%;
             display: flex;
             flex-direction: row;
-            justify-content: space-between;
+            justify-content: center;
             padding: 1rem;
+
+        }
+        section{
+            width: 90%;
+            display: grid;
+            grid-template-columns: repeat(3,3fr);
+            
+            align-items: center;
+            align-content: center;
             gap: 1rem;
         }
 
         .card{
             background-color: rgba(218, 225, 231, 0.267);
             padding: 5px;
-            width: 400px;
+            /* width: 400px; */
             display: flex;
             flex-direction: column;
             gap: 10px;
@@ -64,6 +77,7 @@
             display: flex;
             flex-direction: column;
             gap: 1rem;
+            width: 300px;
         }
 
         .inner-details{
@@ -86,6 +100,37 @@
             outline: 4px solid green;
         }
 
+        /* mobile until 426px */
+        @media screen and (max-width:426px){
+            
+            main{
+                width: 100%; padding: 0; margin: 0;
+            }
+
+            section{
+                width: 100%;
+                padding: 1rem;
+                display: flex; flex-direction: column;
+            }
+
+            .card{
+                width: 100%;
+            }
+
+            img{
+                width: 250px;
+            }
+
+        }
+
+        @media screen and (min-width:428px) and (max-width:1023px){
+            section{
+                grid-template-columns: repeat(2,2fr);
+            }
+            
+        }
+
+
     </style>
 </head>
 <body>
@@ -97,7 +142,10 @@
         </div>
         <div class="nav-inner-right">
             <a href="/products.html">Products</a>
-            <a href="/cart.html" class="'totalTag" >My cart <p id="total"></p> </a>
+            <div class="itemsNum">
+                <a href="/cart.html" class="totalTag" >My cart</a>
+                <p id="total"></p> 
+            </div>
             <a href="/aboutus.html">About us</a>
         </div>
      </nav>

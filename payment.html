@@ -57,7 +57,10 @@
         </div>
         <div class="nav-inner-right">
             <a href="/products.html">Products</a>
-            <a href="/cart.html" class="'totalTag" >My cart <p id="total"></p> </a>
+            <div class="itemsNum">
+                <a href="/cart.html" class="totalTag" >My cart</a>
+                <p id="total"></p> 
+            </div>
             <a href="/aboutus.html">About us</a>
         </div>
      </nav>
@@ -98,18 +101,38 @@
      <script src="/index.js"></script>
 
      <script>
+        const input = document.querySelectorAll('input')
         
         function paid(){
+    
             if(cart.length === 0){
                 console.log('We cannot process your order because your cart is empty...')
             } else{
-                sessionStorage.setItem('notification', 'Order paid. You will recive your order in 2-3 weeks.')
-                showNotification()
-                setTimeout(() => {
-                    added.style.display = 'none'
-                    window.location.href = 'index.html'
-                }, 3000);
-                localStorage.setItem('cart', JSON.stringify([]))
+                // validation
+                let isValid = true;
+                for (let x of input){
+                    if(x.value.trim('') === ''){
+                        sessionStorage.setItem('notification', 'Please fill up all fields!')
+                        added.style.backgroundColor = 'red'
+                        showNotification()
+                        isValid = false;
+                        break;
+                    } 
+                    
+                    
+                }
+                if(isValid){
+                    sessionStorage.setItem('notification', 'Order paid. You will recive your order in 2-3 weeks.')
+                    added.style.backgroundColor = 'green'
+                    showNotification()
+                    setTimeout(() => {
+                        added.style.display = 'none'
+                        window.location.href = 'index.html'
+                    }, 3000);
+                    localStorage.setItem('cart', JSON.stringify([]))
+
+                }
+
             }
             // alert()
         }

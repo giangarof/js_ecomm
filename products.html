@@ -81,6 +81,38 @@
             color:blue;
         }
 
+        @media screen and (max-width:426px){
+            
+            main{
+                width: 100%; padding: 0; margin-top: 1rem;
+            }
+
+            section{
+                width: 100%;
+                padding: 1rem;
+                display: flex; flex-direction: column;
+            }
+
+            .card{
+                width: 100%;
+            }
+
+            img{
+                width: 250px;
+            }
+
+        }
+
+        @media screen and (min-width:428px) and (max-width:1023px){
+            main{
+                padding: 10px;
+            }
+            section{
+                grid-template-columns: repeat(2,2fr);
+            }
+            
+        }
+
     </style>
 </head>
 <body>
@@ -92,7 +124,10 @@
         </div>
         <div class="nav-inner-right">
             <a href="/products.html">Products</a>
-            <a href="/cart.html" class="'totalTag" >My cart <p id="total"></p> </a>
+            <div class="itemsNum">
+                <a href="/cart.html" class="totalTag" >My cart</a>
+                <p id="total"></p> 
+            </div>
             <a href="/aboutus.html">About us</a>
         </div>
      </nav>
@@ -122,13 +157,14 @@
         fetch(url)
             .then(res=>res.json())
             .then(data => products(data))
+            // .catch(err => displayError(err))
 
             const products = (data) => {
                 // console.log(data)
                 for(x of data){
                     section.innerHTML += `
                         <div class='card'>
-                            <p> <a href="/product.html?id=${x['id']}" class='link'> ${x['title']} </a> </p>
+                            <p> <a href="/product.html?id=${x['id']}" class='link'> ${x["title"]} </a> </p>
                             <img src=${x['image']} />
                             <div class='details'>
                                 <p class='inner-details'>${x['description']}</p>
@@ -142,6 +178,8 @@
                     `;
                 }
             }
+// "${x.title.replace(/"/g, '&quot;')}" escapeString(item.title),
+            
      </script>
     
 </body>
